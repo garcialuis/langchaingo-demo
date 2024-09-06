@@ -1,6 +1,7 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import ReviewItem from "./ReviewItem";
 import { useQuery } from "@tanstack/react-query";
+import ReviewSummary from "./ReviewSummary";
 
 export type Review = {
 	_id: number;
@@ -42,6 +43,9 @@ const ReviewList = () => {
 						An error occurred: {error.message}
 					</Text>
 				</Stack>
+			)}
+			{(
+				<ReviewSummary summary={"test test test test"} />
 			)}
 			{!isLoading && !isError && reviews?.length === 0 && (
 				<Stack alignItems={"center"} gap='3'>

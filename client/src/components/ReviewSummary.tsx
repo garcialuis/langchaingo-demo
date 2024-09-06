@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 const ReviewSummary = ({ summary }: { summary: any }) => {
 	return (
@@ -15,17 +15,9 @@ const ReviewSummary = ({ summary }: { summary: any }) => {
 				Summary
 			</Text>
 			<Text mb={2}>
-				{summary.body} {/* TODO: Adjust based on actual data structure */}
+				
+                {summary} {/* TODO: Adjust based on actual data structure */}
 			</Text>
-			{summary.completed ? (
-				<Badge colorScheme="green">
-					Done
-				</Badge>
-			) : (
-				<Badge colorScheme="yellow">
-					In Progress
-				</Badge>
-			)}
 		</Flex>
 	);
 };

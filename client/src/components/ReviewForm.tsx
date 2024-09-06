@@ -45,20 +45,6 @@ const ReviewForm = () => {
 		mutationFn: async (e: React.FormEvent) => {
 			e.preventDefault();
 			try {
-				// const res = await fetch("http://localhost:8080/api/v1/openai-action", {
-				// 	method: "POST",
-				// 	headers: {
-				// 		"Content-Type": "application/json",
-				// 	},
-				// 	body: JSON.stringify({ body: newReview }),
-				// });
-				// const data = await res.json();
-				// if (!res.ok) {
-				// 	throw new Error(data.error || "Failed to perform OpenAI action");
-				// }
-				// setNewReview("");
-				// onSummaryUpdate(data.summary);
-				// return data;
 				const res = await fetch("http://localhost:8080/api/v1/summaries")
 				const data = await res.json()
 
