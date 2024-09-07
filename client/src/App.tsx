@@ -11,7 +11,7 @@ function App() {
 			<Container>
         <PictureRow />
 				<ReviewList />
-        <ReviewForm />
+        {/* <ReviewForm /> */}
 			</Container>
 		</Stack>
 	);
