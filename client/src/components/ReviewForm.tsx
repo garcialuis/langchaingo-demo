@@ -4,7 +4,7 @@ import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { PiOpenAiLogoLight } from "react-icons/pi";
 
-const ReviewForm = () => {
+const ReviewForm = ({ setSummary }: { setSummary: React.Dispatch<React.SetStateAction<string>> }) => {
 	const [newReview, setNewReview] = useState("");
 	const [isOpenAiAction, setIsOpenAiAction] = useState(false);
 
@@ -51,15 +51,12 @@ const ReviewForm = () => {
 				if(!res.ok){
 					throw new Error(data.error || "failed to fetch reviews")
 				}
-				console.log(data) //TODO: remove
+				setSummary(data); // Update the summary state
 				setNewReview("");
 				return data || []
 			} catch (error: any) {
 				throw new Error(error.message);
 			}
-		},
-		onSuccess: () => {
-			// TODO: Handle success, e.g., invalidate queries or show a success message
 		},
 		onError: (error: any) => {
 			alert(error.message);

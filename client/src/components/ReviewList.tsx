@@ -2,16 +2,18 @@ import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import ReviewItem from "./ReviewItem";
 import { useQuery } from "@tanstack/react-query";
 import ReviewSummary from "./ReviewSummary";
+import ReviewForm from "./ReviewForm";
+import { useState } from "react";
 
 export type Review = {
 	_id: number;
 	body: string;
-	completed: boolean; //TODO: remove
 }
 
 const ReviewList = () => {
+	const [summary, setSummary] = useState<string>("");
 
-	const {data:reviews, isLoading, isError, error}= useQuery<Review[]>({
+	const {data:reviewMap, isLoading, isError, error}= useQuery<Object>({
 		queryKey:["reviews"],
 
 		queryFn: async() => {
@@ -22,8 +24,7 @@ const ReviewList = () => {
 				if(!res.ok){
 					throw new Error(data.error || "failed to fetch reviews")
 				}
-				console.log(data) //TODO: remove
-				return data || []
+				return data || new Object();
 			} catch (error:any) {
 				throw new Error(error.message);
 			}
@@ -32,6 +33,8 @@ const ReviewList = () => {
 
 	return (
 		<>
+			<ReviewForm setSummary={setSummary} />
+      		<ReviewSummary summary={summary} />
 			{isLoading && (
 				<Flex justifyContent={"center"} my={4}>
 					<Spinner size={"xl"} />
@@ -44,10 +47,8 @@ const ReviewList = () => {
 					</Text>
 				</Stack>
 			)}
-			{(
-				<ReviewSummary summary={"test test test test"} />
-			)}
-			{!isLoading && !isError && reviews?.length === 0 && (
+
+			{!isLoading && !isError && Object.keys(reviewMap || {}).length === 0 && (
 				<Stack alignItems={"center"} gap='3'>
 					<Text fontSize={"xl"} textAlign={"center"} color={"gray.500"}>
 						"This item has no reviews :("
@@ -56,9 +57,11 @@ const ReviewList = () => {
 				</Stack>
 			)}
 			<Stack gap={3}>
-				{reviews?.map((review) => (
-					<ReviewItem key={review._id} review={review} />
-				))}
+				{
+					Object.entries(reviewMap || {}).map(([key, value]) => {
+						return <ReviewItem key={key} review={value} />
+					})
+				}
 			</Stack>
 		</>
 	);

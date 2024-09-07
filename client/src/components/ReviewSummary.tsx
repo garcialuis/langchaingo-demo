@@ -15,8 +15,7 @@ const ReviewSummary = ({ summary }: { summary: any }) => {
 				Summary
 			</Text>
 			<Text mb={2}>
-				
-                {summary} {/* TODO: Adjust based on actual data structure */}
+                {summary.body}
 			</Text>
 		</Flex>
 	);
