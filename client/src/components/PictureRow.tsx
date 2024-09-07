@@ -12,7 +12,7 @@ export default function PictureRow() {
         >
             <Box flex="1" maxW="200px" minW="150px">
                 <Image
-                    src="https://via.placeholder.com/150"
+                    src="/furr-ball.JPEG"
                     alt="Picture 1"
                     borderRadius="md"
                     boxSize="full"
@@ -21,7 +21,7 @@ export default function PictureRow() {
             </Box>
             <Box flex="1" maxW="200px" minW="150px">
                 <Image
-                    src="https://via.placeholder.com/150"
+                    src="/n.JPEG"
                     alt="Picture 2"
                     borderRadius="md"
                     boxSize="full"
@@ -30,7 +30,7 @@ export default function PictureRow() {
             </Box>
             <Box flex="1" maxW="200px" minW="150px">
                 <Image
-                    src="https://via.placeholder.com/150"
+                    src="/dog-brush.JPEG"
                     alt="Picture 3"
                     borderRadius="md"
                     boxSize="full"

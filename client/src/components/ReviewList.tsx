@@ -50,10 +50,10 @@ const ReviewList = () => {
 
 			{!isLoading && !isError && Object.keys(reviewMap || {}).length === 0 && (
 				<Stack alignItems={"center"} gap='3'>
-					<Text fontSize={"xl"} textAlign={"center"} color={"gray.500"}>
+					<Text fontSize={"xl"} textAlign={"center"} color={"gray.400"}>
 						"This item has no reviews :("
 					</Text>
-					<img src='/sad-puppy.png' alt='Sad puppy' width={70} height={70} />
+					<img src='/n_alone.jpg' alt='Sad puppy' width={200} height={200} />
 				</Stack>
 			)}
 			<Stack gap={3}>
