@@ -14,6 +14,7 @@ This project demonstrates the use of AI to generate summaries of customer produc
 To run this project locally, ensure that you have the following installed:
 - Golang (>=1.18)
 - Node.js (>=14.x.x)
+This project uses the OpenAI API, so you will need an OpenAI account to generate an api key.
 
 ## Getting Started:
 1. Clone the repository:
@@ -39,7 +40,7 @@ make run
 ```
 
 5. Making API Requests:
-Once the server is running and the UI is up, users can submit product reviews via the UI. Pressing the button with the OpenAI logo will send the reviews to the server, which will then use OpenAI to generate a summary of the reviews and display the result on the UI.
+Once the server is running and the UI is up, users can submit product reviews via the UI. Pressing the button with the OpenAI logo will send a request to the server. Ths will trigger a request to the OpenAI API to generate a summary of the reviews. The summary will in turn be displayed in the UI.
 
 ### Future Enhancements:
 This project was created as a demo for the SOMOS AI workshop.
