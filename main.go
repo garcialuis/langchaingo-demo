@@ -22,6 +22,8 @@ type Summary struct {
 	Body string `json:"body"`
 }
 
+const prompt string = "Summarize the following reviews, ensure to highlight the pros and cons mentioned by customers:"
+
 var reviews map[int]Review = map[int]Review{}
 var aggCount int
 
@@ -77,7 +79,7 @@ func generateSummary(c *gin.Context) {
 		sb.WriteString("\n\n")
 	}
 
-	requestPrompt := fmt.Sprintf("Summarize the following reviews, make sure to highlight the pros and cons mentioned by customers: \n\n%s", sb.String())
+	requestPrompt := fmt.Sprintf("%s\n\n%s", prompt, sb.String())
 
 	completion, err := llm.Call(context.Background(), requestPrompt)
 	if err != nil {
@@ -131,3 +133,15 @@ func deleteReview(c *gin.Context) {
 
 	c.JSON(http.StatusOK, nil)
 }
+
+/*
+Example case:
+
+reviews := []string{
+	"The dog brush removes loose fur easily without pulling too much",
+	"It is a good brush for the price",
+	"The brush does a decent job but I wish it had a better grip",
+}
+
+"completion": "Overall, customers are pleased with the dog brush's ability to remove loose hairs easily without causing discomfort to their pets. They appreciate the affordable price point of the brush. However, some customers mention that they wish the brush had a better grip for easier handling."
+*/
