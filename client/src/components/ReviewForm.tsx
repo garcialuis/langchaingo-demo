@@ -77,6 +77,7 @@ const ReviewForm = ({ setSummary }: { setSummary: React.Dispatch<React.SetStateA
 			<Flex gap={2}>
 				<Input
 					type='text'
+					textColor={"white"}
 					value={newReview}
 					onChange={(e) => setNewReview(e.target.value)}
 					ref={(input) => input && input.focus()}

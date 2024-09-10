@@ -3,6 +3,7 @@ import { Flex, Text } from "@chakra-ui/react";
 const ReviewSummary = ({ summary }: { summary: any }) => {
 	return (
 		<Flex
+			textColor={"white"}
 			direction="column"
 			border={"1px"}
 			borderColor={"gray.600"}
